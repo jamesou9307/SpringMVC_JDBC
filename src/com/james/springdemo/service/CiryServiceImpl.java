@@ -7,9 +7,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+public class CiryServiceImpl implements CityService{
 
-public interface CityService {
+    @Autowired
+    private CityDao cityDao;
 
- List<City> getAllCity(String countryCode);
+    @Override
+    public List<City> getAllCity(String countryCode) {
 
+        return cityDao.queryAllCities(countryCode);
+    }
 }

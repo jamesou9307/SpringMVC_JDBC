@@ -1,14 +1,18 @@
 package com.james.springdemo.dao;
 
+import com.james.springdemo.entity.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class CityDao {
+import java.util.List;
 
-@Autowired
-private JdbcTemplate jdbcTemplate;
+
+public interface CityDao {
+
+    List<City> queryAllCities(String countryCode);
+
+
 
 }
 
