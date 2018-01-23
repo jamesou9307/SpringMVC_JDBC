@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class CountryDaoImpl implements CountryDao{
@@ -29,5 +31,23 @@ public class CountryDaoImpl implements CountryDao{
         });
 
         return country;
+    }
+
+    @Override
+    public List<Country> queryAllCountries() {
+
+        List<Country> countries=new ArrayList<>();
+
+        String sql="select a.code,a.name from world.country a";
+        jdbcTemplate.query(sql, new Object[]{}, new RowCallbackHandler() {
+            @Override
+            public void processRow(ResultSet resultSet) throws SQLException {
+                Country country=new Country();
+                country.setCountryCode(resultSet.getString(1));
+                country.setCountryName(resultSet.getString(2));
+                countries.add(country);
+            }
+        });
+        return countries;
     }
 }
