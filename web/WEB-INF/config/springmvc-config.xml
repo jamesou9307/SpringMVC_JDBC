@@ -18,6 +18,7 @@
     <context:component-scan base-package="com.james.springdemo.controller"/>
     <context:component-scan base-package="com.james.springdemo.service"/>
     <context:component-scan base-package="com.james.springdemo.dao"/>
+    <context:component-scan base-package="com.james.springdemo.handler"/>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
